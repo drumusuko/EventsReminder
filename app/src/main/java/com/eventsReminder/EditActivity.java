@@ -1,6 +1,5 @@
 package com.eventsReminder;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
@@ -17,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // レイアウト読み込み
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_edit);
 
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
@@ -31,15 +30,14 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_edit:
-                    // mTextMessage.setText(R.string.title_edit);
+                    // mTextMessage.setText(R.string.title_home);
 
-                    Intent intent = new Intent(getApplication(), EditActivity.class);
-                    startActivity(intent);
+                    finish();
 
                     // return true;
+                case R.id.navigation_edit:
+                    mTextMessage.setText(R.string.title_edit);
+                    return true;
                 case R.id.navigation_agenda:
                     mTextMessage.setText(R.string.title_agenda);
                     return true;
