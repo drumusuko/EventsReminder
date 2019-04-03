@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class EditActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
@@ -17,13 +17,13 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // レイアウト読み込み
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_list);
 
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        navigation.setSelectedItemId(R.id.navigation_edit);
+        navigation.setSelectedItemId(R.id.navigation_list);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -39,12 +39,12 @@ public class EditActivity extends AppCompatActivity {
                     finish();
                     return true;
                 case R.id.navigation_edit:
-                    mTextMessage.setText(R.string.title_edit);
+                    finish();
+                    intent = new Intent(getApplication(), EditActivity.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_list:
-                    finish();
-                    intent = new Intent(getApplication(), ListActivity.class);
-                    startActivity(intent);
+                    mTextMessage.setText(R.string.title_list);
                     return true;
             }
             return false;

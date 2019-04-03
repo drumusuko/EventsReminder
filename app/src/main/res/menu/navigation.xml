@@ -12,8 +12,8 @@
         android:title="@string/title_edit" />
 
     <item
-        android:id="@+id/navigation_agenda"
+        android:id="@+id/navigation_list"
         android:icon="@android:drawable/ic_menu_agenda"
-        android:title="@string/title_agenda" />
+        android:title="@string/title_list" />
 
 </menu>

@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+//        navigation.setSelectedItemId(R.id.navigation_home);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -29,20 +31,23 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            Intent intent;
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_edit:
-                    // mTextMessage.setText(R.string.title_edit);
-
-                    Intent intent = new Intent(getApplication(), EditActivity.class);
+                    intent = new Intent(getApplication(), EditActivity.class);
                     startActivity(intent);
-
-                    // return true;
-                case R.id.navigation_agenda:
-                    mTextMessage.setText(R.string.title_agenda);
                     return true;
+                case R.id.navigation_list:
+                    intent = new Intent(getApplication(), ListActivity.class);
+                    startActivity(intent);
+                    return true;
+//                    mTextMessage.setText(R.string.title_agenda);
+//                    return true;
             }
             return false;
         }
